@@ -1,2 +1,6 @@
 # cs257work
-Software Design Coursework
+
+Created 03/29/2024
+Carleton Software Design
+
+This file contains all of the coursework for CS257 Software Design.
