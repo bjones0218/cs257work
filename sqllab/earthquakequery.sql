@@ -5,7 +5,7 @@ where mag > 5 and latitude between 50 and 100
 
 select quakedate, quaketime, place
 from earthquakes
-where mag = 1
+where mag = 3
 ;
 
 with quake_no as(
@@ -19,3 +19,4 @@ from quake_no q
 join (select max(quakeCount) maxQuakes
 		from quake_no) as mq
 	on mq.maxQuakes = q.quakeCount
+;
