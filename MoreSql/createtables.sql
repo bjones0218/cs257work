@@ -15,3 +15,5 @@ create table statePop(
 	pop integer
 );
 
+\copy topCities from us-cities-top-1k.csv delimiter ',' csv 
+\copy statepop from us-state-pop.csv delimiter ',' csv 
