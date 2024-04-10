@@ -2,8 +2,8 @@ Drop table if exists topCities;
 drop table if exists statePop;
 
 create table topCities(
-	city varchar(25),
-	state varchar(25),
+	city varchar(50),
+	state varchar(50),
 	pop integer,
 	lat real,
 	lon real
@@ -11,7 +11,7 @@ create table topCities(
 
 create table statePop(
 	code varchar(2),
-	state varchar(25),
+	state varchar(50),
 	pop integer
 );
 
