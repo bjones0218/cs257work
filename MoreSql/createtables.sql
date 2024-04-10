@@ -1,5 +1,5 @@
-Drop table if exist topCities;
-drop table if exist statePop;
+Drop table if exists topCities;
+drop table if exists statePop;
 
 create table topCities(
 	city varchar(25),
