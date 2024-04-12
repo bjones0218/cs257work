@@ -1,7 +1,7 @@
 
-select t.city, 100 * (t.pop / s.pop) as state_pop_proportion
+select t.city, (t.pop/s.pop::float)*100 as state_pop_percentage, s.state
 from topCities t
 join statePop s
 	on s.state = t.state
-order by state_pop_proportion
+order by state_pop_percentage desc
 ;
