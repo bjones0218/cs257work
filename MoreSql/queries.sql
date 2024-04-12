@@ -4,4 +4,5 @@ from topCities t
 join statePop s
 	on s.state = t.state
 order by state_pop_percentage desc
+limit 10
 ;
