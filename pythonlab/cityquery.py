@@ -66,7 +66,7 @@ def runQueryThree():
 	if conn is not None:
 		cur = conn.cursor()
 
-		sql = "select c.city from topCities c join (select min(pop) as minPop from topCities where city like 'Minnesota') as m on c.pop = m.maxPop where c.state like 'Minnesota'"
+		sql = "select c.city from topCities c join (select min(pop) as minPop from topCities where city like 'Minnesota') as m on c.pop = m.minPop where c.state like 'Minnesota'"
 
 		cur.execute(sql)
 		rows = cur.fetchall()
