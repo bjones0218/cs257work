@@ -55,6 +55,33 @@ def runQueryTwo():
 		print("Problem with connection")
 		return False
 
+def runQueryThree():
+	conn = psycopg2.connect(
+		host = "localhost",
+		port = 5432,
+		database = "jonesb2",
+		user = "jonesb2",
+		password = "card254cup")
+	
+	if conn is not None:
+		cur = conn.cursor()
+
+		sql = "select c.city from topCities c join (select min(pop) as minPop from topCities where city like 'Minnesota') as m on c.pop = m.maxPop where c.state like 'Minnesota'"
+
+		cur.execute(sql)
+		rows = cur.fetchall()
+
+		if len(rows) == 0:
+			print("There is a problem with your query")
+		else:
+			for each in rows:
+				print(each[0])
+		
+		return True
+	else:
+		print("Problem with connection")
+		return False
 
 # runQueryOne()
-runQueryTwo()
+# runQueryTwo()
+runQueryThree()
