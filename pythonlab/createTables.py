@@ -19,4 +19,6 @@ def createtables():
 	else:
 		print("Problem with connection")
 
-	return True;
+	return True
+
+createtables()
