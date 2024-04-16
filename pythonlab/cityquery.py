@@ -109,7 +109,7 @@ def runQueryFour():
 					select max(lon) as mostWest
 						from topCities
 				), 
-				select city 
+				select topCities.city 
 					from topCities 
 					join maxNorth 
 						on maxNorth.mostNorth = topCities.lat 
