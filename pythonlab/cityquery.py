@@ -137,5 +137,5 @@ def runQueryFour():
 
 # runQueryOne()
 # runQueryTwo()
-runQueryThree()
-# runQueryFour()
+# runQueryThree()
+runQueryFour()
