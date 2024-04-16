@@ -66,7 +66,15 @@ def runQueryThree():
 	if conn is not None:
 		cur = conn.cursor()
 
-		sql = "select c.city from topCities c join (select min(pop) as minPop from topCities where state like 'Minnesota') as m on c.pop = m.minPop where c.state like 'Minnesota'"
+		sql = '''select c.city 
+					from topCities c 
+					join (
+						select min(pop) as minPop 
+							from topCities 
+							where state like 'Minnesota') as m 
+						on c.pop = m.minPop 
+					where c.state like 'Minnesota' 
+				; '''
 
 		cur.execute(sql)
 		rows = cur.fetchall()
@@ -135,13 +143,45 @@ def runQueryFour():
 				;'''
 
 		cur.execute(sql)
+		# rows = cur.fetchall()
+
+		# if len(rows) == 0:
+		# 	print("There is a problem with your query")
+		# else:
+		# 	for each in rows:
+		# 		print(each)
+		
+		for row in cur:
+			print(row)
+
+		return True
+	else:
+		print("Problem with connection")
+		return False
+
+def runQueryFive():
+	conn = psycopg2.connect(
+		host = "localhost",
+		port = 5432,
+		database = "jonesb2",
+		user = "jonesb2",
+		password = "card254cup")
+	
+	if conn is not None:
+		cur = conn.cursor()
+
+		state = input('Enter a state from the United States: ')
+
+		sql = "SELECT * FROM recipes WHERE name = %(state)s"
+
+		cur.execute(sql, {"state":state})
 		rows = cur.fetchall()
 
 		if len(rows) == 0:
 			print("There is a problem with your query")
 		else:
 			for each in rows:
-				print(each)
+				print(each[0])
 		
 		return True
 	else:
