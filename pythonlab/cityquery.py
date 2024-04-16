@@ -143,14 +143,7 @@ def runQueryFour():
 				;'''
 
 		cur.execute(sql)
-		# rows = cur.fetchall()
 
-		# if len(rows) == 0:
-		# 	print("There is a problem with your query")
-		# else:
-		# 	for each in rows:
-		# 		print(each)
-		
 		for row in cur:
 			print(row)
 
@@ -172,16 +165,25 @@ def runQueryFive():
 
 		state = input('Enter a state from the United States: ')
 
-		sql = "SELECT * FROM recipes WHERE name = %(state)s"
-
-		cur.execute(sql, {"state":state})
-		rows = cur.fetchall()
-
-		if len(rows) == 0:
-			print("There is a problem with your query")
+		if len(state) == 2:
+			sql = '''with stateName as (
+						select 
+					) 
+						'''
 		else:
-			for each in rows:
-				print(each[0])
+			sql = '''with citiesInState as (
+						select * 
+						from topCities 
+						where state = %(state)s
+					)
+					select citiesInState.state, 
+						   sum(pop) as totalPopulation
+						from citiesInState'''
+
+		cur.execute(sql, {"state":state})	
+
+		for row in cur:
+			print(row)
 		
 		return True
 	else:
@@ -191,4 +193,5 @@ def runQueryFive():
 # runQueryOne()
 # runQueryTwo()
 # runQueryThree()
-runQueryFour()
+# runQueryFour()
+# runQueryFive()
