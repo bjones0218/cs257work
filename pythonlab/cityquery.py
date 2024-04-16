@@ -137,7 +137,7 @@ def runQueryFour():
 			print("There is a problem with your query")
 		else:
 			for each in rows:
-				print(each[0])
+				print(each)
 		
 		return True
 	else:
