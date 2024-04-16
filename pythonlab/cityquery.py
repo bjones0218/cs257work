@@ -109,29 +109,26 @@ def runQueryFour():
 					select min(lon) as mostWest
 						from topCities
 				)
-
-				select topCities.city 
+				select topCities.city, topCities.state
+					from topCities 
+					join maxNorth 
+						on maxNorth.mostNorth = topCities.lat 
+				union all
+				select topCities.city, topCities.state
 					from topCities 
 					join maxSouth 
 						on maxSouth.mostSouth = topCities.lat 				
-				union
-				select topCities.city 
+				union all
+				select topCities.city, topCities.state
 					from topCities 
 					join maxEast 
 						on maxEast.mostEast = topCities.lon 	
-						
+				union all
+				select topCities.city, topCities.state
+					from topCities 
+					join maxWest 
+						on maxWest.mostWest = topCities.lon 							
 				;'''
-
-					# select topCities.city 
-					# from topCities 
-					# join maxNorth 
-					# 	on maxNorth.mostNorth = topCities.lat 
-					# join maxSouth 
-					# 	on maxSouth.mostSouth = topCities.lat 
-					# join maxEast 
-					# 	on maxEast.mostEast = topCities.lon 
-					# join maxWest 
-					# 	on maxWest.mostWest = topCities.lon
 
 		cur.execute(sql)
 		rows = cur.fetchall()
