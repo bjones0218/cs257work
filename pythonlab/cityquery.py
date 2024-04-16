@@ -102,11 +102,11 @@ def runQueryFour():
 					from topCities
 				),
 				maxEast as (
-					select min(lon) as mostEast
+					select max(lon) as mostEast
 						from topCities
 				), 
 				maxWest as (
-					select max(lon) as mostWest
+					select min(lon) as mostWest
 						from topCities
 				)
 				select topCities.city 
