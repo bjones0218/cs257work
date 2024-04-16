@@ -120,10 +120,7 @@ def runQueryFour():
 					join maxEast 
 						on maxEast.mostEast = topCities.lon 	
 				union
-				select topCities.city 
-					from topCities 
-					join maxWest 
-						on maxWest.mostWest = topCities.lon 							
+						
 				;'''
 
 					# select topCities.city 
