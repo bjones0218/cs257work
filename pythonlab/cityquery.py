@@ -119,7 +119,6 @@ def runQueryFour():
 					from topCities 
 					join maxEast 
 						on maxEast.mostEast = topCities.lon 	
-				union
 						
 				;'''
 
