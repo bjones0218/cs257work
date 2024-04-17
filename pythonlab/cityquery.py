@@ -167,9 +167,13 @@ def runQueryFive():
 
 		if len(state) == 2:
 			sql = '''with stateName as (
-						select 
+						select state
+						from statePop
+						where lower(code) = %(state)s
 					) 
-						'''
+					select state
+					from stateName
+					;'''
 		else:
 			sql = '''with citiesInState as (
 						select * 
@@ -194,4 +198,4 @@ def runQueryFive():
 # runQueryTwo()
 # runQueryThree()
 # runQueryFour()
-# runQueryFive()
+runQueryFive()
