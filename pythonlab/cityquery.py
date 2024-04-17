@@ -163,8 +163,8 @@ def runQueryFive():
 	if conn is not None:
 		cur = conn.cursor()
 
-		state = input('Enter a state from the United States: ')
-
+		state = input('Enter a state from the United States: ').lower()
+		
 		if len(state) == 2:
 			sql = '''with stateName as (
 						select state
@@ -178,11 +178,12 @@ def runQueryFive():
 			sql = '''with citiesInState as (
 						select * 
 						from topCities 
-						where state = %(state)s
+						where lower(state) = %(state)s
 					)
 					select citiesInState.state, 
 						   sum(pop) as totalPopulation
-						from citiesInState'''
+						from citiesInState
+						group by state'''
 
 		cur.execute(sql, {"state":state})	
 
