@@ -190,7 +190,7 @@ def runQueryFive():
 
 		cur.execute(sql, {"state":state})	
 
-		if len(cur) == 0:
+		if len(cur.fetchall()) == 0:
 			print('You did not enter a valid state or state code.')
 		else:
 			for row in cur:
