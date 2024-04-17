@@ -190,9 +190,17 @@ def runQueryFive():
 
 		cur.execute(sql, {"state":state})	
 
-		for row in cur:
-			print(row)
+		# for row in cur:
+		# 	print(row)
 		
+		rows = cur.fetchall()
+
+		if len(rows) == 0:
+			print("There is a problem with your query")
+		else:
+			for each in rows:
+				print(each[0:])
+
 		return True
 	else:
 		print("Problem with connection")
