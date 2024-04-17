@@ -171,8 +171,11 @@ def runQueryFive():
 						from statePop
 						where lower(code) = %(state)s
 					) 
-					select state
-					from stateName
+					select topCities.state, sum(pop) as totalPopulation
+					from topCities
+					join stateName 
+						on stateName.state = topCities.state 
+					group by topCities.state
 					;'''
 		else:
 			sql = '''with citiesInState as (
