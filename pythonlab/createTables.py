@@ -11,7 +11,19 @@ def createtables():
 	if conn is not None:
 		cur = conn.cursor()
 
-		sql = "create table topCities(city varchar(50), state varchar(50), pop integer, lat real, lon real); create table statePop(code varchar(2), state varchar(50), pop integer);"
+		sql = '''create table topCities(
+					city varchar(50), 
+					state varchar(50), 
+					pop integer, 
+					lat real, 
+					lon real)
+				; 
+				
+				create table statePop(
+					code varchar(2), 
+					state varchar(50), 
+					pop integer)
+				;'''
 
 		cur.execute(sql)
 		conn.commit()
