@@ -11,7 +11,11 @@ def runQueryOne():
 	if conn is not None:
 		cur = conn.cursor()
 
-		sql = "select * from topCities where city like 'Northfield' and state like 'Minnesota'"
+		sql = '''select * 
+				 from topCities 
+				 where city like 'Northfield' 
+				 	and state like 'Minnesota' 
+				;'''
 
 		cur.execute(sql)
 		rows = cur.fetchall()
@@ -39,7 +43,13 @@ def runQueryTwo():
 	if conn is not None:
 		cur = conn.cursor()
 
-		sql = "select c.city from topCities c join (select max(pop) as maxPop from topCities) as m on c.pop = m.maxPop"
+		sql = '''select c.city 
+				from topCities c 
+				join (
+					select max(pop) as maxPop 
+					from topCities) as m 
+				on c.pop = m.maxPop
+				;'''
 
 		cur.execute(sql)
 		rows = cur.fetchall()
@@ -191,7 +201,8 @@ def runQueryFive():
 					select citiesInState.state, 
 						   sum(pop) as totalPopulation
 						from citiesInState
-						group by state'''
+						group by state
+					;'''
 
 		cur.execute(sql, {"state":state})	
 		
