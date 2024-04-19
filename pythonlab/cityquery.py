@@ -30,8 +30,6 @@ def runQueryOne():
 		print("Problem with connection")
 		return False
 
-
-
 def runQueryTwo():
 	conn = psycopg2.connect(
 		host = "localhost",
