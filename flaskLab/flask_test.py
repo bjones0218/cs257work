@@ -47,7 +47,7 @@ def get_pop(state):
 		if len(rows) == 0:
 			return "You did not enter a valid state"
 		else:
-			return str(rows[0][1])
+			return "The population of" + str(rows[0][0]) + "is " + str(rows[0][1])
 	else:
 		return "Problem with connection"
 
