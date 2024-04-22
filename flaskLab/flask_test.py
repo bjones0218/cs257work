@@ -24,13 +24,13 @@ def my_sum(num1, num2):
 
 @app.route('/pop/<state>')
 def get_pop(state):
-    conn = psycopg2.connect(
+	conn = psycopg2.connect(
 		host = "localhost",
 		port = 5432,
 		database = "jonesb2",
 		user = "jonesb2",
 		password = "card254cup")
-    
+      
 	state = state.lower()
     
 	if conn is not None:
