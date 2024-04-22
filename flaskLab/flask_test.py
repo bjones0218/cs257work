@@ -18,7 +18,7 @@ def my_color(word1):
 
 @app.route('/add/<num1>/<num2>')
 def my_sum(num1, num2):
-    sum = num1 + num2
+    sum = int(num1) + int(num2)
     return sum
 
 if __name__ == '__main__':
