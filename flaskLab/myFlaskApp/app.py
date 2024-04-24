@@ -22,7 +22,35 @@ def rand():
 		password = "card254cup")
 	
 
-	
+	if conn is not None:
+		cur = conn.cursor()
+
+		nameQuery = '''select name
+						from names
+						order by Random()
+						limit 1'''
+
+		cur.execute(nameQuery)
+		rows = cur.fetchall()
+		person = rows[0][0]
+
+		adjQuery = '''select adjective
+						from adjectives
+						order by Random()
+						limit 1'''
+
+		cur.execute(adjQuery)
+		rows = cur.fetchall()
+		word = rows[0][0]
+
+		cityQuery = '''select city
+						from topCities
+						order by Random()
+						limit 1'''
+		
+		cur.execute(cityQuery)
+		rows = cur.fetchall()
+		location = rows[0][0]
 
 	randYear = random.randint(1940, 2024)
 	return render_template("sentence.html", name = person, adjective = word, city = location, year = randYear)
