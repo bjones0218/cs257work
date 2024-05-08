@@ -6,8 +6,15 @@
 .center-para{
   text-align: center;
   margin-top: 20px;
+  color: purple;
+  font-size: larger;
 }
 
 .big-button{
   font-size: large;
+  height: 50px;
+  background-color: blue;
+  color: white;
+  border-radius: 25px;
+  border-style: none;
 }
